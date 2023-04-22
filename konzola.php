@@ -4,7 +4,7 @@
             <div class="wraper">
             <section id="promo">
                 <div>
-                    <h1>Консоль <a href="" class="btn btn-outline-success" data-toggle="modal" data-target="create"><span class="material-symbols-outlined">add</span></a></h1>
+                    <h1>Консоль <button class="btn btn-outline-success" data-toggle="modal" data-target="#create"><span class="material-symbols-outlined">add</span></button></h1>
                     <table class="table table-striped table-hover">
                       <thead class="table-primary">
                         <th>ИД</th>
@@ -46,11 +46,11 @@
                     <small>Цена</small>
                     <input type="text" class="form-control" name="Цена">
                   </div>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                  <button type="submit" class="btn btn-primary" name="add">Отправить</button>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                <button type="submit" class="btn btn-primary" name="add">Отправить</button>
               </div>
             </div>
           </div>
