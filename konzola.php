@@ -4,7 +4,16 @@
             <div class="wraper">
             <section id="promo">
                 <div>
-                    <h1>Консоль <button class="btn btn-outline-success" data-toggle="modal" data-target="#create"><span class="material-symbols-outlined">add</span></button></h1>
+                    <h1>Консоль</h1>
+                    <?php include('inc/foo.php');?>
+                    <form action="" method="post">
+                      <small><b>Наименование</b></small>
+                      <input type="text" class="form-control" id="nazov" placeholder="Полное название прописью">
+                      <small><b>Цена</b></small>
+                      <input type="text" class="form-control" id="cena" placeholder="В копейках"><br>
+                      <button type="submit" name"submit" class="btn btn-success"><span class="material-symbols-outlined">add</span> Отправить</button>
+                    </form>
+                    <br>
                     <table class="table table-striped table-hover">
                       <thead class="table-primary">
                         <th>ИД</th>
@@ -28,32 +37,6 @@
                     </table>
                 </div>
             </section>
-        </div>
-        <div class="modal fade" id="create" tabindex="-1" aria-labelledby="createE" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Добавление продукта</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-              </div>
-              <div class="modal-body">
-                <form action="" method="post">
-                  <div class="form-group">
-                    <small>Наименование</small>
-                    <input type="text" class="form-control" name="Наименование">
-                  </div>
-                  <div class="form-group">
-                    <small>Цена</small>
-                    <input type="text" class="form-control" name="Цена">
-                  </div>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                  <button type="submit" class="btn btn-primary" name="add">Отправить</button>
-                </form>
-              </div>
-              <div class="modal-footer">
-              </div>
-            </div>
-          </div>
         </div>
 <?php
     include("parts/footer.php")
