@@ -2,17 +2,19 @@
 
 include('db.php"');
 
-$nazov = $_POST['nazov'];
-$cena = $_POST['cena'];
-$get_id = $_GET['id'];
+$data = [
+  ':nazov' => $_POST["nazov"],
+  ':cena' => $_POST["cena"]
+];
 
 // Vytvorenie zapisov
 
-if (isset($_POST['submit'])){
-  $sql = ("insert into produkcia (nazov, cena, image) values (?,?,?)");
-  $query = $pdo->prepar($sql);
-  $query->execute([$nazov, $cena, null]);
+if (isset($_POST['add_produkt'])){
+  $sql = ("insert into produkcia (nazov, cena, image) values (:nazov, :cena, null)");
+  $query = $pdo->prepare($sql);
+  $query->execute($data);
   if ($query) {
-    header("Location: ". $_SERVER["HTTP_REFERER"]);
+    header("Location: ../konzola.php");
   }
 }
+

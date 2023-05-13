@@ -6,12 +6,12 @@
                 <div>
                     <h1>Консоль</h1>
                     <?php include('inc/foo.php');?>
-                    <form action="" method="post">
+                    <form action="inc/foo.php" method="post">
                       <small><b>Наименование</b></small>
-                      <input type="text" class="form-control" id="nazov" placeholder="Полное название прописью">
+                      <input type="text" class="form-control" id="nazov" name="nazov" placeholder="Полное название прописью">
                       <small><b>Цена</b></small>
-                      <input type="text" class="form-control" id="cena" placeholder="В копейках"><br>
-                      <button type="submit" name"submit" class="btn btn-success"><span class="material-symbols-outlined">add</span> Отправить</button>
+                      <input type="text" class="form-control" id="cena" name="cena" placeholder="В копейках"><br>
+                      <button type="submit" name="add_produkt" class="btn btn-success"><span class="material-symbols-outlined">add</span> Отправить</button>
                     </form>
                     <br>
                     <table class="table table-striped table-hover">
