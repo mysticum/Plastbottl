@@ -18,3 +18,8 @@ if (isset($_POST['add_produkt'])){
   }
 }
 
+// Čitanie zapisov
+
+$sql = $pdo->prepare("select * from produkcia");
+$sql->execute();
+$results = $sql->fetchAll(PDO::FETCH_OBJ);
