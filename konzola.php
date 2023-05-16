@@ -17,27 +17,87 @@
                         <th>Выполнить</th>
                       </thead>
                       <tbody>
-                        <?php
-                          foreach($results as $res){
-                            echo 
-                            '<tr>
-                              <th>'.$res->id.'</th>
-                              <td>'.$res->nazov.'</td>
-                              <td>'.$res->cena.'</td>
+                        <?php foreach($results as $res): ?>
+
+                            <tr>
+                              <th><?php echo $res->id; ?></th>
+                              <td><?php echo $res->nazov; ?></td>
+                              <td><?php echo $res->cena; ?></td>
                               <td><a href="img/'.$res->image.'">Просмотр</a></td>
                               <td>
-                                <a href="" class="btn btn-warning"><span class="material-symbols-outlined">edit</span></a>
-                                <a href="" class="btn btn-danger"><span class="material-symbols-outlined">backspace</span></a>
+                                <a class="btn btn-warning" data-toggle="modal" data-target="#edit_<?php echo $res->id; ?>"><span class="material-symbols-outlined">edit</span></a>
+                                <a class="btn btn-danger" data-toggle="modal" data-target="#del_<?php echo $res->id; ?>"><span class="material-symbols-outlined">backspace</span></a>
                               </td>
-                            </tr>';
-                          }
-                        ?>
+                            </tr>
+
+                            <!-- Modálne okno redaktovania továru -->
+                            <div class="modal fade" tabindex="-1" role="dialog" id="edit_<?php echo $res->id; ?>">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content shadow">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title">Редактировать товар №<?php echo $res->id; ?></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="inc/foo.php" method="post">
+                                    <div class="form-group" style="display:none;">
+                                      <small><b>ИД</b></small>
+                                      <input type="text" class="form-control" name="id" value="<?php echo $res->id; ?>" >
+                                    </div>
+                                      <div class="form-group">
+                                        <small><b>Наименование</b></small>
+                                        <input type="text" class="form-control" name="nazov" value="<?php echo $res->nazov; ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <small><b>Цена</b></small>
+                                        <input type="text" class="form-control" name="cena" value="<?php echo $res->cena; ?>">
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                    <button type="submit" name="opravit_produkt" class="btn btn-primary">Выполнить</button>
+                                  </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Modálne okno odstranenia továru -->
+                            <div class="modal fade" tabindex="-1" role="dialog" id="del_<?php echo $res->id; ?>">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content shadow">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title">Удалить товар №<?php echo $res->id; ?>?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form action="inc/foo.php" method="post">
+                                    <div class="form-group" style="display:none;">
+                                      <small><b>ИД</b></small>
+                                      <input type="text" class="form-control" name="id" value="<?php echo $res->id; ?>" >
+                                    </div>
+                                    <?php echo $res->nazov; ?>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                                    <button type="submit" name="odstranit_produkt" class="btn btn-danger">Выполнить</button>
+                                  </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                        <?php endforeach ?>
                       </tbody>
                     </table>
                 </div>
             </section>
         </div>
-
+        
+        <!-- Modálne okno pridania továru -->
         <div class="modal fade" tabindex="-1" role="dialog" id="Modal">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content shadow">
@@ -51,11 +111,27 @@
                 <form action="inc/foo.php" method="post">
                   <div class="form-group">
                     <small><b>Наименование</b></small>
-                    <input type="text" class="form-control" name="nazov" value="" placeholder="Полное наименование товара">
+                    <input type="text" class="form-control" name="nazov" placeholder="Полное наименование товара">
                   </div>
                   <div class="form-group">
                     <small><b>Цена</b></small>
-                    <input type="text" class="form-control" name="cena" value="" placeholder="В копейках">
+                    <input type="text" class="form-control" name="cena" placeholder="В копейках">
+                  </div>
+                  <div class="form-group">
+                    <small><b>Объём</b></small>
+                    <input type="text" class="form-control" name="objem" placeholder="В миллилитрах">
+                  </div>
+                  <div class="form-group">
+                    <small><b>Диаметр горла</b></small>
+                    <input type="text" class="form-control" name="diametr" placeholder="В копейках">
+                  </div>
+                  <div class="form-group">
+                    <small><b>Описание</b></small>
+                    <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Цвет, форма, прочее..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <small><b>Изображение</b></small>
+                    <input class="form-control" type="file" id="image">
                   </div>
               </div>
               <div class="modal-footer">
