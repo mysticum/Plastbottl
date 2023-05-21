@@ -13,6 +13,9 @@
                         <th>ИД</th>
                         <th>Наименование</th>
                         <th>Цена</th>
+                        <th>Объём</th>
+                        <th>Диаметр</th>
+                        <th>Описание</th>
                         <th>Изображение</th>
                         <th>Выполнить</th>
                       </thead>
@@ -23,7 +26,10 @@
                               <th><?php echo $res->id; ?></th>
                               <td><?php echo $res->nazov; ?></td>
                               <td><?php echo $res->cena; ?></td>
-                              <td><a href="img/'.$res->image.'">Просмотр</a></td>
+                              <td><?php echo $res->objem; ?></td>
+                              <td><?php echo $res->diametr; ?></td>
+                              <td><?php echo $res->popis; ?></td>
+                              <td><a href="<?php echo "img/".$res->image;?> ">Просмотр</a></td>
                               <td>
                                 <a class="btn btn-warning" data-toggle="modal" data-target="#edit_<?php echo $res->id; ?>"><span class="material-symbols-outlined">edit</span></a>
                                 <a class="btn btn-danger" data-toggle="modal" data-target="#del_<?php echo $res->id; ?>"><span class="material-symbols-outlined">backspace</span></a>
@@ -53,6 +59,18 @@
                                       <div class="form-group">
                                         <small><b>Цена</b></small>
                                         <input type="text" class="form-control" name="cena" value="<?php echo $res->cena; ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <small><b>Объём</b></small>
+                                        <input type="text" class="form-control" name="objem" value="<?php echo $res->objem; ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <small><b>Диаметр горла</b></small>
+                                        <input type="text" class="form-control" name="diametr" value="<?php echo $res->diametr; ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <small><b>Описание</b></small>
+                                        <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $res->popis;?></textarea>
                                       </div>
                                   </div>
                                   <div class="modal-footer">
@@ -108,7 +126,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="inc/foo.php" method="post">
+                <form action="inc/foo.php" method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <small><b>Наименование</b></small>
                     <input type="text" class="form-control" name="nazov" placeholder="Полное наименование товара">
@@ -123,7 +141,7 @@
                   </div>
                   <div class="form-group">
                     <small><b>Диаметр горла</b></small>
-                    <input type="text" class="form-control" name="diametr" placeholder="В копейках">
+                    <input type="text" class="form-control" name="diametr" placeholder="В миллиметрах">
                   </div>
                   <div class="form-group">
                     <small><b>Описание</b></small>
@@ -131,7 +149,7 @@
                   </div>
                   <div class="form-group">
                     <small><b>Изображение</b></small>
-                    <input class="form-control" type="file" id="image">
+                    <input class="form-control" type="file" name="image">
                   </div>
               </div>
               <div class="modal-footer">
