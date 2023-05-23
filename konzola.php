@@ -61,7 +61,7 @@
                                         <input type="text" class="form-control" name="cena" value="<?php echo $res->cena; ?>">
                                       </div>
                                       <div class="form-group">
-                                        <small><b>Объём</b></small>
+                                        <small><b>Объём/банка</b></small>
                                         <input type="text" class="form-control" name="objem" value="<?php echo $res->objem; ?>">
                                       </div>
                                       <div class="form-group">
@@ -136,8 +136,8 @@
                     <input type="text" class="form-control" name="cena" placeholder="В копейках">
                   </div>
                   <div class="form-group">
-                    <small><b>Объём</b></small>
-                    <input type="text" class="form-control" name="objem" placeholder="В миллилитрах">
+                    <small><b>Объём/банка</b></small>
+                    <input type="text" class="form-control" name="objem" placeholder="Если банка — 0, в миллилитрах">
                   </div>
                   <div class="form-group">
                     <small><b>Диаметр горла</b></small>

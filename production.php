@@ -1,5 +1,41 @@
 <?php
   include('parts/header.php');
+
+  function getId($ob){
+    switch($ob){
+        case 5000:
+            return "5,00l";
+            break;
+        case 2000:
+            return "2,00l";
+            break;
+        case 1500:
+            return "1,50l";
+            break;
+        case 1000:
+            return "1,00l";
+            break;
+        case 500:
+            return "0,50l";
+            break;
+        case 350:
+            return "0,35l";
+            break;
+        case 330:
+            return "0,33l";
+            break;
+        case 250:
+            return "0,25l";
+            break;
+        case 100:
+        case 50:
+            return "0,05l 0,10";
+            break;
+        case 0:
+            return "jar";
+            break;
+    }
+  }
 ?>
         <div class="wraper">
             <!-- Prepinačy -->
@@ -8,6 +44,7 @@
                     <div id="selector" class="col-sm row" onclick="main(bottles_checkboxes, cards)">
                         <div>
                             <h5>Категории</h5>
+                            <?php include('inc/foo.php');?>
                             <div class="btn-group-bottles" role="group1" name="bottles">
                                 <input type="checkbox" class="btn-check" id="5,00l" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="5,00l">5л</label>
@@ -28,8 +65,6 @@
                                 <br class="na-resp">
                                 <input type="checkbox" class="btn-check" id="0,05l 0,10l" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="0,05l 0,10l">0,05-0,1л</label>
-                                <input type="checkbox" class="btn-check" id="38mm" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="38mm">ø0,38</label>
                                 <input type="checkbox" class="btn-check" id="jar" autocomplete="off">
                                 <label class="btn btn-outline-primary" for="jar">Банки ø0,78</label>
                             </div>
@@ -43,9 +78,9 @@
                         <p>Трудно переоценить преимущество пластиковых бутылок перед  другими видами упаковки. Эти изделия обладают хорошей стойкостью к растворам
                             кислот, щелочей и другим агрессивным средам, атмосферным воздействиям, стойки к истиранию, вибрации и ударам. Помимо этого выпускаемые
                             нами изделия в среднем в 8 раз легче стеклотары. Это делает возможным применение ПЭТ-тары не только в пищевой промышленности, но и в
-                            фармакологии, и в бытовой химии.
+                            фармакологии, бытовой химии.
                         </p>
-                        <p>Пластиковые бутылки на сегодняшний день являются не дорогой, современной, многофункциональной и неприхотливой в использовании тарой,
+                        <p>Пластиковые бутылки на сегодняшний день являются недорогой, современной, многофункциональной и неприхотливой в использовании тарой,
                             применяемой в разных отраслях деятельности. Нашими клиентами являются крупные торговые компании и большая сеть ресторанов и кафе.
                         </p>
                         <p>ООО «Пласт-Ботл» – компания, которая владеет полным и качественным  циклом производства Бутылок!</p>
@@ -56,6 +91,16 @@
             <!-- Katalóg -->
             <section>
                 <div id="cards" class="row">
+                    <?php foreach($results as $res): ?>
+                        <div class="col-sm-2 card" id="<?php echo getId($res->objem); ?>" style="width: 15rem;">
+                            <img src="<?php echo "img/".$res->image; ?>" class="card-img-top card-img">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $res->nazov; ?></h5>
+                                <p><?php echo $res->popis; ?></p>
+                                <h6><?php echo ($res->cena / 100)."₽"; ?></h6>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                     <div class="col-sm-2 card" id="0,50l 1,00l" style="width: 15rem;">
                         <img src="img/79_pet-butylka-1l05l--gorla-38mm.jpg" class="card-img-top card-img">
                         <div class="card-body">
