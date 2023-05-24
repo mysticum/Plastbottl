@@ -96,7 +96,7 @@
                             <img src="<?php echo "img/".$res->image; ?>" class="card-img-top card-img">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $res->nazov; ?></h5>
-                                <p><?php echo $res->popis; ?></p>
+                                <p><?php echo $res->popis.", ø горла ".$res->diametr."мм"; ?></p>
                                 <h6><?php echo ($res->cena / 100)."₽"; ?></h6>
                             </div>
                         </div>

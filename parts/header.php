@@ -34,7 +34,48 @@
                         </li>
                     </ul>
                     </div>
+                    <a class="btn btn-primary order-button" data-toggle="modal" data-target="#ziadost">Оставить заявку</a>
                 </div>
               </nav>
         </header>
+
+        <!-- Modálne okno prijatia žiadostí -->
+        <div class="modal fade" tabindex="-1" role="dialog" id="ziadost">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content shadow">
+              <div class="modal-header">
+                <h5 class="modal-title">Оставить заявку</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="inc/foo.php" method="post">
+                  <p>Заполните, пожалуйста, форму. Мы обязательно с вами свяжемся.</p>
+                  <div class="form-group">
+                    <small><b>Как к вам можно обращатся?</b></small>
+                    <input type="text" class="form-control" name="meno" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <small><b>Что вас заинтересовало?</b></small>
+                    <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Продукция, скидки, прочее..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <small><b>В какой регион хотите получить доставку?</b></small>
+                    <input type="text" class="form-control" name="region" placeholder="Город, район">
+                  </div>
+                  <div class="form-group">
+                    <small><b>Как с вами связаться?а</b></small>
+                    <input type="text" class="form-control" name="kontakt" placeholder="Телефон, почта">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="submit" name="nova_ziadost" class="btn btn-primary">Выполнить</button>
+              </div>
+              </form>
+            </div>
+          </div>
+	      </div>
+
         <main>

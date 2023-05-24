@@ -8,6 +8,9 @@ $objem = $_POST["objem"] ?? "";
 $diametr = $_POST["diametr"] ?? "";
 $popis = $_POST["popis"] ?? "";
 $id = $_POST["id"] ?? "";
+$meno = $_POST["diametr"] ?? "";
+$region = $_POST["region"] ?? "";
+$kontakt = $_POST["kontakt"] ?? "";
 
 // Vytvorenie zapisov
 
@@ -49,5 +52,16 @@ if(isset($_POST["odstranit_produkt"])){
   $query->execute([$id]);
   if ($query) {
     header("Location: ../konzola.php");
+  }
+}
+
+if (isset($_POST['nova_ziadost'])){
+  $sql = ("insert into ziadost (meno, popis, region, kontakt, flag, pridane) values (?, ?, ?, ?, ?, ?)");
+  $query = $pdo->prepare($sql);
+  $query->execute([$meno, $popis, $region, $kontakt, 0, date('Y-m-d H:i:s')]);
+  if ($query) {
+    header("Location: ../thanks.php");
+  } else{
+    echo "Niečo sa pokazilo";
   }
 }

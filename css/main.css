@@ -13,6 +13,10 @@ main{
     width: 80%;
 }
 
+.order-button{
+    align-self: right;
+}
+
 #qr{
     height: 300px;
 }
