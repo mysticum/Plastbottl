@@ -39,7 +39,7 @@
                             <button type="submit" name="odlozit_ziadost" class="btn btn-secondary">Переместить в конец</button>
                           </form>
                         <?php } else { ?>
-                          <p>Новых заявок пока нет</p>
+                          <p>✨ Новых заявок пока нет</p>
                         <?php } ?>
                       </div>
                     </div><br>
