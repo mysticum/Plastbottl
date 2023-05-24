@@ -7,7 +7,42 @@
                     <h1>Консоль
                       <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><span class="material-symbols-outlined">add</span></button>
                     </h1>
-                    <?php include('inc/foo.php'); echo date('H:i:s d.m.Y');?>
+                    <?php include('inc/foo.php');?>
+                    <div class="card">
+                      <div class="card-header">
+                        Следующая заявка
+                      </div>
+                      <div class="card-body">
+                        <?php if($ziadost){ ?>
+                          <form action="inc/foo.php" method="post">
+                            <div class="form-group" style="display:none;">
+                              <small><b>ИД</b></small>
+                              <input type="text" class="form-control" name="id" value="<?php echo $ziadost->id; ?>" >
+                            </div>
+                            <div class="form-group">
+                              <small><b>Наименование</b></small>
+                              <input type="text" class="form-control" name="meno" value="<?php echo $ziadost->meno; ?>">
+                            </div>
+                            <div class="form-group">
+                              <small><b>Цена</b></small>
+                              <input type="text" class="form-control" name="region" value="<?php echo $ziadost->region; ?>">
+                            </div>
+                            <div class="form-group">
+                              <small><b>Объём/банка</b></small>
+                              <input type="text" class="form-control" name="kontakt" value="<?php echo $ziadost->kontakt; ?>">
+                            </div>
+                            <div class="form-group">
+                              <small><b>Описание</b></small>
+                              <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $ziadost->popis;?></textarea>
+                            </div><br>
+                            <button type="submit" name="zatvorit_ziadost" class="btn btn-primary">Выполнено</button>
+                            <button type="submit" name="odlozit_ziadost" class="btn btn-secondary">Переместить в конец</button>
+                          </form>
+                        <?php } else { ?>
+                          <p>Новых заявок пока нет</p>
+                        <?php } ?>
+                      </div>
+                    </div>
                     <table class="table table-striped table-hover">
                       <thead class="table-primary">
                         <th>ИД</th>
