@@ -29,11 +29,18 @@ if (isset($_POST['add_produkt'])){
   }
 }
 
-// Čitanie zapisov
+// Čitanie produkcií
 
 $sql = $pdo->prepare("select * from produkcia");
 $sql->execute();
 $results = $sql->fetchAll(PDO::FETCH_OBJ);
+
+// Čitanie žiadosti
+
+$sql = $pdo->prepare("select * from ziadost where flag = 0 order by pridane limit 1");
+$sql->execute();
+$ziadosti = $sql->fetchAll(PDO::FETCH_OBJ);
+$ziadost = $ziadosti[0] ?? "";
 
 // Aktualizácia zapisov
 
@@ -61,6 +68,28 @@ if (isset($_POST['nova_ziadost'])){
   $query->execute([$meno, $popis, $region, $kontakt, 0, date('Y-m-d H:i:s')]);
   if ($query) {
     header("Location: ../thanks.php");
+  } else{
+    echo "Niečo sa pokazilo";
+  }
+}
+
+if (isset($_POST['odlozit_ziadost'])){
+  $sql = ("update ziadost set pridane = ? where id = ?");
+  $query = $pdo->prepare($sql);
+  $query->execute([$id, date('Y-m-d H:i:s')]);
+  if ($query) {
+    header("Location: ../konzola.php");
+  } else{
+    echo "Niečo sa pokazilo";
+  }
+}
+
+if (isset($_POST['zatvorit_ziadost'])){
+  $sql = ("update ziadost set flag = 1 where id = ?");
+  $query = $pdo->prepare($sql);
+  $query->execute([$id]);
+  if ($query) {
+    header("Location: ../konzola.php");
   } else{
     echo "Niečo sa pokazilo";
   }
