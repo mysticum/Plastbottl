@@ -10,30 +10,30 @@
                     <?php include('inc/foo.php');?>
                     <div class="card">
                       <div class="card-header">
-                        Следующая заявка
+                        Следующая заявка <?php if($ziadost) { echo "(всего ".sizeof($ziadosti).")";} ?>
                       </div>
                       <div class="card-body">
                         <?php if($ziadost){ ?>
                           <form action="inc/foo.php" method="post">
                             <div class="form-group" style="display:none;">
                               <small><b>ИД</b></small>
-                              <input type="text" class="form-control" name="id" value="<?php echo $ziadost->id; ?>" >
+                              <input type="text" class="form-control" name="id" value="<?php echo $ziadost->id; ?>">
                             </div>
                             <div class="form-group">
-                              <small><b>Наименование</b></small>
-                              <input type="text" class="form-control" name="meno" value="<?php echo $ziadost->meno; ?>">
+                              <small><b>Имя</b></small>
+                              <input type="text" class="form-control" name="meno" value="<?php echo $ziadost->meno; ?>" disabled>
                             </div>
                             <div class="form-group">
-                              <small><b>Цена</b></small>
-                              <input type="text" class="form-control" name="region" value="<?php echo $ziadost->region; ?>">
+                              <small><b>Регион</b></small>
+                              <input type="text" class="form-control" name="region" value="<?php echo $ziadost->region; ?>" disabled>
                             </div>
                             <div class="form-group">
-                              <small><b>Объём/банка</b></small>
-                              <input type="text" class="form-control" name="kontakt" value="<?php echo $ziadost->kontakt; ?>">
+                              <small><b>Контактные данные</b></small>
+                              <input type="text" class="form-control" name="kontakt" value="<?php echo $ziadost->kontakt; ?>" disabled>
                             </div>
                             <div class="form-group">
                               <small><b>Описание</b></small>
-                              <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $ziadost->popis;?></textarea>
+                              <textarea name="popis" class="form-control" id="exampleFormControlTextarea1" rows="3" disabled><?php echo $ziadost->popis;?></textarea>
                             </div><br>
                             <button type="submit" name="zatvorit_ziadost" class="btn btn-primary">Выполнено</button>
                             <button type="submit" name="odlozit_ziadost" class="btn btn-secondary">Переместить в конец</button>
@@ -42,7 +42,7 @@
                           <p>Новых заявок пока нет</p>
                         <?php } ?>
                       </div>
-                    </div>
+                    </div><br>
                     <table class="table table-striped table-hover">
                       <thead class="table-primary">
                         <th>ИД</th>

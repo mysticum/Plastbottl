@@ -8,7 +8,7 @@ $objem = $_POST["objem"] ?? "";
 $diametr = $_POST["diametr"] ?? "";
 $popis = $_POST["popis"] ?? "";
 $id = $_POST["id"] ?? "";
-$meno = $_POST["diametr"] ?? "";
+$meno = $_POST["meno"] ?? "";
 $region = $_POST["region"] ?? "";
 $kontakt = $_POST["kontakt"] ?? "";
 
@@ -37,7 +37,7 @@ $results = $sql->fetchAll(PDO::FETCH_OBJ);
 
 // Čitanie žiadosti
 
-$sql = $pdo->prepare("select * from ziadost where flag = 0 order by pridane limit 1");
+$sql = $pdo->prepare("select * from ziadost where flag = 0 order by pridane");
 $sql->execute();
 $ziadosti = $sql->fetchAll(PDO::FETCH_OBJ);
 $ziadost = $ziadosti[0] ?? "";
@@ -76,7 +76,7 @@ if (isset($_POST['nova_ziadost'])){
 if (isset($_POST['odlozit_ziadost'])){
   $sql = ("update ziadost set pridane = ? where id = ?");
   $query = $pdo->prepare($sql);
-  $query->execute([$id, date('Y-m-d H:i:s')]);
+  $query->execute([date('Y-m-d H:i:s'), $id]);
   if ($query) {
     header("Location: ../konzola.php");
   } else{
