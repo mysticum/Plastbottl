@@ -12,7 +12,7 @@
                 else{
                   ?>
                     <h1>Консоль
-                      <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><span class="material-symbols-outlined">add</span></button>S
+                      <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><span class="material-symbols-outlined">add</span></button>
                     </h1>
                     <?php include('inc/foo.php');?>
                     <div class="card">
