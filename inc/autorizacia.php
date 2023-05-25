@@ -5,7 +5,7 @@ include("db.php");
 
 $data = [
   "nick" => $_POST['nick'],
-  "heslo" => $_POST['heslo']
+  "heslo" => md5($_POST['heslo'])
 ];
 var_dump($data);
 var_dump($_POST);
