@@ -5,14 +5,14 @@
             <div class="wraper">
             <section id="promo">
                 <div>
-                <?php 
-                    if($_SESSION["valid"] != true) {
-                    echo 'Для начала <a href="login.php">авторизуйтесь</a>';
+                <?php
+                if(!isset($_SESSION["valid"])) {
+                  echo 'Для начала <a href="login.php">авторизуйтесь</a>';
                   }
                 else{
                   ?>
                     <h1>Консоль
-                      <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><span class="material-symbols-outlined">add</span></button>
+                      <button class="btn btn-success mb-1" data-toggle="modal" data-target="#Modal"><span class="material-symbols-outlined">add</span></button>S
                     </h1>
                     <?php include('inc/foo.php');?>
                     <div class="card">
